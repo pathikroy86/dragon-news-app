@@ -9,7 +9,7 @@ const NotFound = ({ error, reset }) => {
     }, [error]);
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 px-4">
+        <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-indigo-500 via-purple-500 to-pink-500 px-4">
             <div className="backdrop-blur-lg bg-white/10 border border-white/20 rounded-2xl shadow-2xl p-10 max-w-lg w-full text-center text-white animate-fadeIn">
 
                 {/* Emoji / Icon */}
@@ -41,7 +41,7 @@ const NotFound = ({ error, reset }) => {
 
                 {/* Error Details (Optional for dev) */}
                 {process.env.NODE_ENV === "development" && (
-                    <p className="text-xs mt-6 text-red-200 break-words">
+                    <p className="text-xs mt-6 text-red-200 wrap-break-word">
                         {error?.message}
                     </p>
                 )}
