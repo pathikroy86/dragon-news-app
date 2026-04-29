@@ -5,10 +5,15 @@ import React from 'react';
 
 const Navlink = ({ href, children }) => {
     const pathName = usePathname();
-    console.log(pathName)
-    const isActive = href === pathName
-    console.log(isActive)
-    return <Link href={href}>{children}</Link>
+    const isActive = href === pathName;
+
+    return (
+        <Link
+            href={href}
+            className={isActive ? 'btn' : ''}>
+            {children}
+        </Link>
+    );
 };
 
 export default Navlink;

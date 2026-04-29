@@ -5,10 +5,10 @@ import React from 'react';
 
 const MainLayout = ({ children }) => {
     return (
-        <div>
-            <Header></Header>
+        <div><Header />
+
             <BreakingNews></BreakingNews>
-            <Navbar></Navbar>
+            <Navbar />
             {children}
         </div>
     );
