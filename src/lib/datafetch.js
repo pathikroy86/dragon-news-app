@@ -39,3 +39,9 @@ export const fetchAllNewsData = async () => {
     news.data = dedupeNews(news.data);
     return news;
 }
+
+export const fetchNewsDetails = async (id) => {
+    const res = await fetch(`https://openapi.programming-hero.com/api/news/${id}`)
+    const news = await res.json();
+    return news.data[0];
+}
