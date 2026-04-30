@@ -1,21 +1,10 @@
 import LeftSideBar from "@/components/shared/Homepage/News/LeftSideBar";
+import NewsCard from "@/components/shared/Homepage/News/NewsCard";
 import SocialLogin from "@/components/shared/Homepage/News/SocialLogin";
-
-const fetchCategories = async () => {
-    const res = await fetch('https://openapi.programming-hero.com/api/news/categories');
-    const response = res.json();
-    return response;
-}
-
-const fetchCategoryData = async (id) => {
-    const res = await fetch(`https://openapi.programming-hero.com/api/news/category/${id}`)
-    const news = await res.json();
-    return news;
-}
+import { fetchCategories, fetchCategoryData } from "@/lib/datafetch";
 
 const CategoryData = async ({ params }) => {
     const res = await params;
-    console.log(res.id);
     const response = await fetchCategories();
     const categories = response.data.news_category;
     const { data } = await fetchCategoryData(res.id);
@@ -28,7 +17,7 @@ const CategoryData = async ({ params }) => {
                 </div>
                 <div className="col-span-6">
                     {
-                        data.length > 0 ? data.map(d => <p key={d._id} className="px-2 py-3 bg-base-200 mb-3">{d.title}</p>) : <h1 className="text-center font-bold text-4xl">No News Found</h1>
+                        data.length > 0 ? data.map(news => <NewsCard key={news._id} news={news} className="px-2 py-3 bg-base-200 mb-3"></NewsCard>) : <h1 className="text-center font-bold text-4xl">No News Found</h1>
                     }
                 </div>
                 <div className="col-span-3">

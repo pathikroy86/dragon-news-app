@@ -1,22 +1,12 @@
 import LeftSideBar from "@/components/shared/Homepage/News/LeftSideBar";
+import NewsCard from "@/components/shared/Homepage/News/NewsCard";
 import SocialLogin from "@/components/shared/Homepage/News/SocialLogin";
-
-const fetchCategories = async () => {
-  const res = await fetch('https://openapi.programming-hero.com/api/news/categories');
-  const response = res.json();
-  return response;
-}
-
-const fetchCategoryData = async () => {
-  const res = await fetch('https://openapi.programming-hero.com/api/news/category/08')
-  const news = await res.json();
-  return news;
-}
+import { fetchAllNewsData, fetchCategories } from "@/lib/datafetch";
 
 export default async function Home() {
   const { data } = await fetchCategories();
   const categories = data.news_category;
-  const news = await fetchCategoryData();
+  const news = await fetchAllNewsData();
   const allNews = news.data;
 
   return (
@@ -26,7 +16,7 @@ export default async function Home() {
       </div>
       <div className="col-span-6">
         {
-          allNews.map(news => <p key={news._id} className="bg-base-300 py-2 px-3 mb-2">{news.title}</p>)
+          allNews.map(news => <NewsCard key={news._id} news={news}></NewsCard>)
         }
       </div>
       <div className="col-span-3">
