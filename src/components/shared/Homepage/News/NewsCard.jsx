@@ -1,9 +1,10 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { FaRegBookmark } from "react-icons/fa";
 import { IoMdShare } from "react-icons/io";
 
 const NewsCard = ({ news, className = '' }) => {
-    const { title, author, thumbnail_url, image_url, details, total_view, rating } = news;
+    const { title, author, thumbnail_url, image_url, details, total_view, rating, _id } = news;
     const image = image_url || thumbnail_url;
 
     return (
@@ -43,7 +44,7 @@ const NewsCard = ({ news, className = '' }) => {
                         alt={title}
                     />
                 }
-                <p className='text-[#706F6F] px-4'>{details?.slice(0, 180)}...<button className='text-[#FF8C47] font-semibold'>Read More</button></p>
+                <p className='text-[#706F6F] px-4'>{details?.slice(0, 180)}...<Link href={`/news/${_id}`}><button className='text-[#FF8C47] font-semibold'>Read More</button></Link></p>
 
                 <div className='flex justify-between text-sm text-gray-500 px-4'>
                     <span>Rating: {rating?.number ?? 'N/A'}</span>
