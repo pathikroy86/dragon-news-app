@@ -1,8 +1,16 @@
 import SocialLogin from "@/components/shared/Homepage/News/SocialLogin";
-import { fetchNewsDetails } from "@/lib/datafetch";
+import { fetchCategoryData, fetchNewsDetails } from "@/lib/datafetch";
 import Image from "next/image";
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa6";
+
+export async function generateMetadata({ params }) {
+    const { id } = await params;
+    const categoryres = await fetchNewsDetails(id);
+    return {
+        title: categoryres.title,
+    }
+}
 
 const DetailsPage = async ({ params }) => {
     const { id } = await params;
