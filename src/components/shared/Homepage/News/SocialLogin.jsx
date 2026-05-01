@@ -10,11 +10,13 @@ const SocialLogin = () => {
             provider: "google",
         });
     };
+
     const handleGithubSignIn = async () => {
         const data = await authClient.signIn.social({
             provider: "github"
         })
     }
+
     return (
         <div>
             <h3 className="text-[#403F3F] text-xl font-semibold mb-2">Login With</h3>
