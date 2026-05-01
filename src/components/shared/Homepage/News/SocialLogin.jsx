@@ -20,7 +20,7 @@ const SocialLogin = () => {
     return (
         <div>
             <h3 className="text-[#403F3F] text-xl font-semibold mb-2">Login With</h3>
-            <div className='space-y-2'>
+            <div className='space-y-2 flex flex-col'>
                 <button onClick={handleGoogleSignIn} className="btn bg-white text-blue-500 border-blue-500">
                     <FaGoogle />
                     Login with Google
