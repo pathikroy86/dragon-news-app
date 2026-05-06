@@ -8,7 +8,8 @@ export const metadata = {
 const AboutPage = () => {
     return (
         <div>
-            This is About Page
+            This is About Page to go here
+
         </div>
     );
 };
